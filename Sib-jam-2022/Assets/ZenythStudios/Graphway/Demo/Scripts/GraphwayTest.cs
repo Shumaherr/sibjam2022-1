@@ -16,7 +16,7 @@ public class GraphwayTest : MonoBehaviour
     private GwWaypoint[] waypoints;
     private float speed = 0;
 
-    private Dictionary<int, GwNode> nodes;
+    private GwNode storage;
 
     private Random rng = new Random();
 
@@ -25,7 +25,25 @@ public class GraphwayTest : MonoBehaviour
     private void Start()
     {
         map = gameObject.GetComponentInParent<Map>();
-        nodes = Graphway.instance.nodes;
+        storage = Graphway.instance.nodes.First(n => n.Value.nodeID == 40).Value;
+    }
+
+    private Queue<GwWaypoint[]> paths = new Queue<GwWaypoint[]>();
+
+    /**
+     * Узнаем все цвета коробок из кузова и строим маршрут
+     */
+    private void SendBoxes(ICollection<Color> colors)
+    {
+        var path = new List<Vector3>() {storage.position};
+        var destinations = map.destinations.Values
+            .Where(d => colors.Contains(d.GetComponent<Destination>().color))
+            .Select(d => d.GetComponent<Destination>().transform.position);
+
+        foreach (var destination in path.Concat(destinations))
+        {
+            
+        }
     }
 
     void Update()

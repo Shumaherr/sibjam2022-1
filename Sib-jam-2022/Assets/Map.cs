@@ -42,7 +42,11 @@ public class Map : MonoBehaviour
             throw new Exception("Destination prefab is missing");
         }
 
-        var shuffled = Shuffle(nodes.Values.ToList());
+        var excludeNodes = new List<int>() {0, 40, 3};
+
+        // Удалить ближайшие к старту точки, чтоб не возить коробки рядом со складом
+        var startExcluded = nodes.Values.Where(x => !excludeNodes.Contains(x.nodeID)).ToList();
+        var shuffled = Shuffle(startExcluded);
 
         var result = new Dictionary<int, GameObject>();
 
