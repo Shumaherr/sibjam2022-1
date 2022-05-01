@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Random = System.Random;
 
-public class GraphwayTest : MonoBehaviour
+public class Transport : MonoBehaviour
 {
     public const int MAX_SPEED = 50;
     public const int ACCELERATION = 5;
@@ -28,31 +28,44 @@ public class GraphwayTest : MonoBehaviour
         storage = Graphway.instance.nodes.First(n => n.Value.nodeID == 40).Value;
     }
 
-    private Queue<GwWaypoint[]> paths = new Queue<GwWaypoint[]>();
+    private bool isDriving = false;
+
+    private readonly Queue<Vector3> routes = new Queue<Vector3>();
 
     /**
      * Узнаем все цвета коробок из кузова и строим маршрут
      */
     private void SendBoxes(ICollection<Color> colors)
     {
-        var path = new List<Vector3>() {storage.position};
+        if (colors.Count == 0) return;
+
+        // Маршрут от склада, через все точки и обратно на склад
         var destinations = map.destinations.Values
             .Where(d => colors.Contains(d.GetComponent<Destination>().color))
-            .Select(d => d.GetComponent<Destination>().transform.position);
+            .Select(d => d.GetComponent<Destination>().transform.position).ToList();
 
-        foreach (var destination in path.Concat(destinations))
-        {
-            
-        }
+        destinations.Add(storage.position);
+        destinations.ForEach(d => routes.Enqueue(d));
     }
 
     void Update()
     {
-        // Handle mouse click
         if (Input.GetMouseButtonDown(0))
+        {
+            SendBoxes(new List<Color>() {Color.red, Color.cyan});
+        }
+
+        // Handle mouse click
+        if (Input.GetMouseButtonDown(1))
         {
             var dest = map.destinations.ElementAtOrDefault(rng.Next(0, map.destinations.Count - 1)).Value;
             Graphway.FindPath(transform.position, dest.transform.position, FindPathCallback, true, debugMode);
+        }
+
+        if (routes.Count > 0 && !isDriving)
+        {
+            var route = routes.Dequeue();
+            Graphway.FindPath(transform.position, route, FindPathCallback, true, debugMode);
         }
 
         // Move towards waypoints (if has waypoints)
@@ -80,19 +93,7 @@ public class GraphwayTest : MonoBehaviour
         {
             // Reset speed
             speed = 0;
-        }
-
-        // Draw Path
-        if (debugMode && waypoints != null && waypoints.Length > 0)
-        {
-            Vector3 startingPoint = transform.position;
-
-            for (int i = 0; i < waypoints.Length; i++)
-            {
-                Debug.DrawLine(startingPoint, waypoints[i].position, Color.green);
-
-                startingPoint = waypoints[i].position;
-            }
+            isDriving = false;
         }
     }
 
@@ -100,9 +101,9 @@ public class GraphwayTest : MonoBehaviour
     {
         if (waypoints.Length > 1)
         {
-            GwWaypoint[] newWaypoints = new GwWaypoint[waypoints.Length - 1];
+            var newWaypoints = new GwWaypoint[waypoints.Length - 1];
 
-            for (int i = 1; i < waypoints.Length; i++)
+            for (var i = 1; i < waypoints.Length; i++)
             {
                 newWaypoints[i - 1] = waypoints[i];
             }
@@ -127,6 +128,7 @@ public class GraphwayTest : MonoBehaviour
         else
         {
             waypoints = path;
+            isDriving = true;
         }
     }
 
