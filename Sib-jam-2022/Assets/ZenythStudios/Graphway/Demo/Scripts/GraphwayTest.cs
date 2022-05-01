@@ -16,14 +16,34 @@ public class GraphwayTest : MonoBehaviour
     private GwWaypoint[] waypoints;
     private float speed = 0;
 
-    private Dictionary<int, GwNode> nodes;
+    private GwNode storage;
 
     private Random rng = new Random();
 
+    private Map map;
+
     private void Start()
     {
-        nodes = Graphway.instance.nodes;
-        Debug.Log(1);
+        map = gameObject.GetComponentInParent<Map>();
+        storage = Graphway.instance.nodes.First(n => n.Value.nodeID == 40).Value;
+    }
+
+    private Queue<GwWaypoint[]> paths = new Queue<GwWaypoint[]>();
+
+    /**
+     * Узнаем все цвета коробок из кузова и строим маршрут
+     */
+    private void SendBoxes(ICollection<Color> colors)
+    {
+        var path = new List<Vector3>() {storage.position};
+        var destinations = map.destinations.Values
+            .Where(d => colors.Contains(d.GetComponent<Destination>().color))
+            .Select(d => d.GetComponent<Destination>().transform.position);
+
+        foreach (var destination in path.Concat(destinations))
+        {
+            
+        }
     }
 
     void Update()
@@ -31,10 +51,8 @@ public class GraphwayTest : MonoBehaviour
         // Handle mouse click
         if (Input.GetMouseButtonDown(0))
         {
-            var node = nodes.ElementAtOrDefault(rng.Next(0, nodes.Count - 1)).Value;
-            Graphway.FindPath(transform.position, node.position, FindPathCallback, true, debugMode);
-
-            Debug.Log(1);
+            var dest = map.destinations.ElementAtOrDefault(rng.Next(0, map.destinations.Count - 1)).Value;
+            Graphway.FindPath(transform.position, dest.transform.position, FindPathCallback, true, debugMode);
         }
 
         // Move towards waypoints (if has waypoints)
@@ -115,11 +133,11 @@ public class GraphwayTest : MonoBehaviour
 
     void OnGUI()
     {
-        GUIStyle style = new GUIStyle();
-        style.normal.textColor = Color.red;
-
-        GUI.Label(new Rect(20, 20, 200, 20),
-            "INSTRUCTIONS: Left click on a roadway node to find the quickest path to it.", style);
-        GUI.Label(new Rect(Screen.width - 260, 20, 200, 20), "Make sure GIZMOS are ENABLED! ^^^", style);
+        // GUIStyle style = new GUIStyle();
+        // style.normal.textColor = Color.red;
+        //
+        // GUI.Label(new Rect(20, 20, 200, 20),
+        //     "INSTRUCTIONS: Left click on a roadway node to find the quickest path to it.", style);
+        // GUI.Label(new Rect(Screen.width - 260, 20, 200, 20), "Make sure GIZMOS are ENABLED! ^^^", style);
     }
 }

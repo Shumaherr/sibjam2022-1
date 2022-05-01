@@ -1,15 +1,13 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Map : MonoBehaviour
 {
     private Dictionary<int, GwNode> nodes;
-    private List<GameObject> destinations;
+    public Dictionary<int, GameObject> destinations;
 
     public GameObject destinationPrefab;
 
@@ -28,31 +26,46 @@ public class Map : MonoBehaviour
         destinations = InitializeDestinations();
     }
 
-    private List<GameObject> InitializeDestinations()
+    public void SendPackages(List<Color> colors)
+    {
+        var dests = destinations.Values
+            .Where(v => colors.Contains(v.GetComponent<Destination>().color));
+    }
+
+    /**
+     * Генерация точек доставки
+     */
+    private Dictionary<int, GameObject> InitializeDestinations()
     {
         if (destinationPrefab == null)
         {
             throw new Exception("Destination prefab is missing");
         }
 
-        var destinations = new List<GameObject>();
-        var nodesList = Shuffle(nodes.Values.ToList());
+        var excludeNodes = new List<int>() {0, 40, 3};
 
-        for (var i = nodesList.Count - 1; i >= 0; i--)
+        // Удалить ближайшие к старту точки, чтоб не возить коробки рядом со складом
+        var startExcluded = nodes.Values.Where(x => !excludeNodes.Contains(x.nodeID)).ToList();
+        var shuffled = Shuffle(startExcluded);
+
+        var result = new Dictionary<int, GameObject>();
+
+        for (var i = destinationsColors.Count - 1; i >= 0; i--)
         {
-            var randomIndex = Random.Range(0, nodesList.Count - 1);
-            var destinationNode = nodesList[randomIndex];
-            nodesList = nodesList.Where(node => node.nodeID != destinationNode.nodeID).ToList();
-            var dest = Instantiate(destinationPrefab);
-            dest.transform.position = destinationNode.position;
-            dest.transform.parent = transform;
-            destinations.Add(dest);
+            var destination = Instantiate(destinationPrefab);
+            destination.transform.parent = transform;
+            destination.transform.localScale = new Vector3(30, 30, 30);
+            destination.GetComponent<Destination>().SetColor(destinationsColors[i]);
+
+            var targetNode = shuffled[i];
+            destination.transform.position = targetNode.position;
+            result[targetNode.nodeID] = destination;
         }
 
-        return destinations;
+        return result;
     }
 
-    public IList<T> Shuffle<T>(IList<T> list)
+    private static IList<T> Shuffle<T>(IList<T> list)
     {
         var n = list.Count;
         while (n > 1)

@@ -6,8 +6,11 @@ public class Destination : MonoBehaviour
 {
     public readonly int id;
 
+    public Color color;
+
     public void SetColor(Color color)
     {
+        this.color = color;
         GetComponent<SpriteRenderer>().color = color;
     }
 
