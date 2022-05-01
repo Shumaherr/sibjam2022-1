@@ -26,6 +26,12 @@ public class Map : MonoBehaviour
         destinations = InitializeDestinations();
     }
 
+    public void SendPackages(List<Color> colors)
+    {
+        var dests = destinations.Values
+            .Where(v => colors.Contains(v.GetComponent<Destination>().color));
+    }
+
     /**
      * Генерация точек доставки
      */
