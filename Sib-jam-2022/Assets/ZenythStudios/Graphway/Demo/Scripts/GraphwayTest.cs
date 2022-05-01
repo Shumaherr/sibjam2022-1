@@ -26,7 +26,6 @@ public class GraphwayTest : MonoBehaviour
     {
         map = gameObject.GetComponentInParent<Map>();
         nodes = Graphway.instance.nodes;
-        Debug.Log(1);
     }
 
     void Update()
@@ -34,10 +33,8 @@ public class GraphwayTest : MonoBehaviour
         // Handle mouse click
         if (Input.GetMouseButtonDown(0))
         {
-            var node = nodes.ElementAtOrDefault(rng.Next(0, nodes.Count - 1)).Value;
-            Graphway.FindPath(transform.position, node.position, FindPathCallback, true, debugMode);
-
-            Debug.Log(1);
+            var dest = map.destinations.ElementAtOrDefault(rng.Next(0, map.destinations.Count - 1)).Value;
+            Graphway.FindPath(transform.position, dest.transform.position, FindPathCallback, true, debugMode);
         }
 
         // Move towards waypoints (if has waypoints)
