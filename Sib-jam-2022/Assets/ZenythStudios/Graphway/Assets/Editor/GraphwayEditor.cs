@@ -105,14 +105,14 @@ public class GraphwayEditor : Editor
 
 				RaycastHit hit;
 
-				if (Physics.Raycast(worldRay, out hit))
-				{
+				// if (Physics.Raycast(worldRay, out hit))
+				// {
 					// Add new node at position
-					CreateNodeObject(hit.point);
+					CreateNodeObject(new Vector3(0, 0, 0));
 
 					// Mark scene as dirty to trigger 'Save Changes' prompt
 					EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
-				}
+				// }
 
 				// Use up event
 				Event.current.Use();

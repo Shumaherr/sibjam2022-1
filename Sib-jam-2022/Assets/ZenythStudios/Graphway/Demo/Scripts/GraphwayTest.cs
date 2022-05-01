@@ -20,8 +20,11 @@ public class GraphwayTest : MonoBehaviour
 
     private Random rng = new Random();
 
+    private Map map;
+
     private void Start()
     {
+        map = gameObject.GetComponentInParent<Map>();
         nodes = Graphway.instance.nodes;
         Debug.Log(1);
     }
@@ -31,8 +34,9 @@ public class GraphwayTest : MonoBehaviour
         // Handle mouse click
         if (Input.GetMouseButtonDown(0))
         {
-            var node = nodes.ElementAtOrDefault(rng.Next(0, nodes.Count - 1)).Value;
-            Graphway.FindPath(transform.position, node.position, FindPathCallback, true, debugMode);
+            var dest = map.destinations.ElementAtOrDefault(rng.Next(0, map.destinations.Count - 1)).Value;
+
+            Graphway.FindPath(transform.position, dest.transform.position, FindPathCallback, true, debugMode);
 
             Debug.Log(1);
         }
@@ -115,11 +119,11 @@ public class GraphwayTest : MonoBehaviour
 
     void OnGUI()
     {
-        GUIStyle style = new GUIStyle();
-        style.normal.textColor = Color.red;
-
-        GUI.Label(new Rect(20, 20, 200, 20),
-            "INSTRUCTIONS: Left click on a roadway node to find the quickest path to it.", style);
-        GUI.Label(new Rect(Screen.width - 260, 20, 200, 20), "Make sure GIZMOS are ENABLED! ^^^", style);
+        // GUIStyle style = new GUIStyle();
+        // style.normal.textColor = Color.red;
+        //
+        // GUI.Label(new Rect(20, 20, 200, 20),
+        //     "INSTRUCTIONS: Left click on a roadway node to find the quickest path to it.", style);
+        // GUI.Label(new Rect(Screen.width - 260, 20, 200, 20), "Make sure GIZMOS are ENABLED! ^^^", style);
     }
 }
