@@ -57,15 +57,17 @@
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GwNode.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\Graphway.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GwJob.cs" />
+     <Compile Include="Assets\Scripts\Grid.cs" />
      <Compile Include="Assets\Destination.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GraphwayNode.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GwConnection.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Item.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GraphwayConnection.cs" />
      <Compile Include="Assets\Map.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GraphwayObject.cs" />
-     <Compile Include="Assets\Scripts\Grid.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
-     <Compile Include="Assets\Scripts\Item.cs" />
+     <Compile Include="Assets\Scripts\Singletone.cs" />
+     <Compile Include="Assets\Scripts\DraggableItem.cs" />
  <Reference Include="UnityEngine">
  <HintPath>E:/Programs/2020.3.32f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
