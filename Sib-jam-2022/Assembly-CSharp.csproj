@@ -52,15 +52,20 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Garage.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Demo\Scripts\Transport.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GwWaypoint.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GwNode.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\Graphway.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GwJob.cs" />
+     <Compile Include="Assets\Spawner.cs" />
      <Compile Include="Assets\Scripts\DraggableItem.cs" />
      <Compile Include="Assets\Fmod\Scripts\SoundVolumeController.cs" />
      <Compile Include="Assets\Scripts\Grid.cs" />
      <Compile Include="Assets\Destination.cs" />
+     <Compile Include="Assets\Box.cs" />
+     <Compile Include="Assets\GarageCar.cs" />
+     <Compile Include="Assets\Scripts\ClicknDropItem.cs" />
      <Compile Include="Assets\Fmod\Scripts\AudioManager.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GraphwayNode.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GwConnection.cs" />
@@ -70,10 +75,6 @@
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GraphwayConnection.cs" />
      <Compile Include="Assets\Map.cs" />
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GraphwayObject.cs" />
-     <Compile Include="Assets\Spawner.cs" />
-     <Compile Include="Assets\Box.cs" />
-     <Compile Include="Assets\GarageCar.cs" />
-     <Compile Include="Assets\Garage.cs" />
      <None Include="Assets\Fmod\readme.txt" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Unity/2020.3.32f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

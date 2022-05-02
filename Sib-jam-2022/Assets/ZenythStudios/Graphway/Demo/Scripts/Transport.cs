@@ -32,6 +32,9 @@ public class Transport : MonoBehaviour
 
     private readonly Queue<Vector3> routes = new Queue<Vector3>();
 
+    private int pointsForFinish = 0;
+    private int pointsFinished = 0;
+
     /**
      * Узнаем все цвета коробок из кузова и строим маршрут
      */
@@ -46,6 +49,7 @@ public class Transport : MonoBehaviour
 
         destinations.Add(storage.position);
         destinations.ForEach(d => routes.Enqueue(d));
+        pointsForFinish = destinations.Count;
     }
 
     void Update()
@@ -90,6 +94,12 @@ public class Transport : MonoBehaviour
 
     private void NextWaypoint()
     {
+        pointsFinished++;
+        if (pointsFinished == pointsForFinish)
+        {
+            Debug.Log(123);
+        }
+
         if (waypoints.Length > 1)
         {
             var newWaypoints = new GwWaypoint[waypoints.Length - 1];
@@ -121,16 +131,5 @@ public class Transport : MonoBehaviour
             waypoints = path;
             isDriving = true;
         }
-    }
-
-
-    void OnGUI()
-    {
-        // GUIStyle style = new GUIStyle();
-        // style.normal.textColor = Color.red;
-        //
-        // GUI.Label(new Rect(20, 20, 200, 20),
-        //     "INSTRUCTIONS: Left click on a roadway node to find the quickest path to it.", style);
-        // GUI.Label(new Rect(Screen.width - 260, 20, 200, 20), "Make sure GIZMOS are ENABLED! ^^^", style);
     }
 }
