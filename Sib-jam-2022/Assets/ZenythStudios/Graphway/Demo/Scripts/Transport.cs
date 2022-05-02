@@ -55,13 +55,6 @@ public class Transport : MonoBehaviour
             SendBoxes(new List<Color>() {Color.red, Color.cyan});
         }
 
-        // Handle mouse click
-        if (Input.GetMouseButtonDown(1))
-        {
-            var dest = map.destinations.ElementAtOrDefault(rng.Next(0, map.destinations.Count - 1)).Value;
-            Graphway.FindPath(transform.position, dest.transform.position, FindPathCallback, true, debugMode);
-        }
-
         if (routes.Count > 0 && !isDriving)
         {
             var route = routes.Dequeue();
