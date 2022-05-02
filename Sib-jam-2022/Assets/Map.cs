@@ -31,14 +31,11 @@ public class Map : MonoBehaviour
 
     public void ToggleMap()
     {
-        if (isOpen)
-        {
-            StartCoroutine(CloseMap());
-        }
-        else
-        {
-            StartCoroutine(OpenMap());
-        }
+        // Двигаем камеру, чтоб скрыть/показать карту
+        var pos = Camera.main.transform.position;
+        pos.z = isOpen ? -400 : -740;
+        Camera.main.transform.position = pos;
+        isOpen = !isOpen;
     }
 
     private IEnumerator CloseMap()
