@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ClicknDropItem : Item
 {
-    private Transform flyingItem;
+    private Transform erzatzItem;
 
     private void OnMouseDown()
     {
-        if (flyingItem != null)
+        if (erzatzItem != null)
         {
             TryToPlaceItem();
             return;
@@ -25,7 +25,7 @@ public class ClicknDropItem : Item
         {
             hit.collider.GetComponent<Grid>()
                 .SetValue(GameManager.Instance.MainCamera.ScreenToWorldPoint(Input.mousePosition),
-                    flyingItem.GetComponent<Item>());
+                    erzatzItem.GetComponent<Item>());
         }
     }
 
@@ -57,13 +57,13 @@ public class ClicknDropItem : Item
 
     private void ChangePostion()
     {
-        if (flyingItem == null)
+        if (erzatzItem == null)
             return;
-        Vector3 newPos = flyingItem.transform.position;
+        Vector3 newPos = erzatzItem.transform.position;
         newPos.x = GameManager.Instance.MainCamera.ScreenToWorldPoint(Input.mousePosition).x;
         newPos.y = GameManager.Instance.MainCamera.ScreenToWorldPoint(Input.mousePosition).y;
         newPos.z = 0;
-        flyingItem.transform.position = newPos;
+        transform.position = newPos;
     }
 
     private void StartMove()
@@ -71,9 +71,11 @@ public class ClicknDropItem : Item
         //TODO check if we can drag
         Debug.Log("Start Drag");
         state = State.IsMoving;
-        flyingItem = Instantiate(gameObject).transform;
-        Color newColor = flyingItem.GetComponent<SpriteRenderer>().color;
+        GameManager.Instance.FlyingItem = this.transform;
+        erzatzItem = Instantiate(gameObject).transform;
+        erzatzItem.GetComponent<ClicknDropItem>().state = State.IsMoving;
+        Color newColor = GetComponent<SpriteRenderer>().color;
         newColor.a = 0.5f;
-        flyingItem.GetComponent<SpriteRenderer>().color = newColor;
+        GetComponent<SpriteRenderer>().color = newColor;
     }
 }

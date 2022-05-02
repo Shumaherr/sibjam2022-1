@@ -7,7 +7,14 @@ public class Grid: MonoBehaviour
 {
     [SerializeField] private Vector3 origin;
     [SerializeField] private Vector2Int gridSize;
-    [SerializeField] private float cellSize;
+    [SerializeField] private int cellSize;
+
+    public int CellSize
+    {
+        get => cellSize;
+        set => cellSize = value;
+    }
+
     [SerializeField] private Transform cellPrefab;
     
     private Item[,] grid;
@@ -15,6 +22,7 @@ public class Grid: MonoBehaviour
     private void Awake()
     {
         grid = new Item[gridSize.x, gridSize.y];
+        cellPrefab.localScale = new Vector3(cellSize, cellSize, cellSize);
         GenerateGrid();
     }
 
@@ -23,7 +31,7 @@ public class Grid: MonoBehaviour
         return new Vector3(x, y, 0) * cellSize + origin;
     }
 
-    private Vector2Int GetGridPosition(Vector3 worldPosition)
+    public Vector2Int GetGridPosition(Vector3 worldPosition)
     {
         return new Vector2Int(Mathf.FloorToInt(worldPosition.x / cellSize),
             Mathf.FloorToInt(worldPosition.z / cellSize));
@@ -43,15 +51,32 @@ public class Grid: MonoBehaviour
 
     private void GenerateGrid()
     {
-        for (int x = 0; x < gridSize.x; x++)
+        for (int i = gridSize.x - 1; i >= 0; i--)
         {
-            for (int y = 0; y < gridSize.y; y++)
+            for (int j = gridSize.y - 1; j >= 0; j--)
             {
-                var cell = Instantiate(cellPrefab, GetWorldPosition(x, y), Quaternion.identity);
+                var cell = Instantiate(cellPrefab, GetWorldPosition(i, j), Quaternion.identity);
                 cell.transform.parent = transform;
-                cell.name = $"Cell {x}, {y}";
-                SetValue(x, y, cell.GetComponent<Item>());
+                cell.name = $"Cell {i}, {j}";
+                SetValue(i, j, cell.GetComponent<Item>());
             }
         }
+    }
+
+    public float GetLeftBound()
+    {
+        return GetWorldPosition(0, 0).x;
+    }
+    public float GetRightBound()
+    {
+        return GetWorldPosition(gridSize.x - 1, gridSize.y - 1).x;
+    }
+    public float GetTopBound()
+    {
+        return GetWorldPosition(gridSize.x - 1, gridSize.y - 1).y;
+    }
+    public float GetBottomBound()
+    {
+        return GetWorldPosition(0, 0).y;
     }
 }
