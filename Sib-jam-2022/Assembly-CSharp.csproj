@@ -72,6 +72,8 @@
      <Compile Include="Assets\ZenythStudios\Graphway\Assets\Scripts\GraphwayObject.cs" />
      <Compile Include="Assets\Spawner.cs" />
      <Compile Include="Assets\Box.cs" />
+     <Compile Include="Assets\GarageCar.cs" />
+     <Compile Include="Assets\Garage.cs" />
      <None Include="Assets\Fmod\readme.txt" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Unity/2020.3.32f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

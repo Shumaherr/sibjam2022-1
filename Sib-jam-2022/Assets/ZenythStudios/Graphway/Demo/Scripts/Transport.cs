@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,9 +9,6 @@ public class Transport : MonoBehaviour
     public int MAX_SPEED = 50;
     public int ACCELERATION = 5;
 
-    [Tooltip("Enable Debug Mode to see algoritm in action slowed down. MAKE SURE GIZMOS ARE ENABLED!")]
-    public bool debugMode = false;
-
     private GwWaypoint[] waypoints;
     private float speed = 0;
 
@@ -21,6 +17,10 @@ public class Transport : MonoBehaviour
     private Random rng = new Random();
 
     private Map map;
+
+    public Action<bool> FinishCallback;
+
+    public string transportId;
 
     private void Start()
     {
@@ -35,7 +35,7 @@ public class Transport : MonoBehaviour
     /**
      * Узнаем все цвета коробок из кузова и строим маршрут
      */
-    private void SendBoxes(ICollection<Color> colors)
+    public void SendBoxes(ICollection<Color> colors)
     {
         if (colors.Count == 0) return;
 
@@ -50,19 +50,14 @@ public class Transport : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            SendBoxes(new List<Color>() {Color.red, Color.cyan});
-        }
-
         if (routes.Count > 0 && !isDriving)
         {
             var route = routes.Dequeue();
-            Graphway.FindPath(transform.position, route, FindPathCallback, true, debugMode);
+            Graphway.FindPath(transform.position, route, FindPathCallback, true, false);
         }
 
         // Move towards waypoints (if has waypoints)
-        if (waypoints != null && waypoints.Length > 0)
+        if (waypoints != null && waypoints.Length > 0 && isDriving)
         {
             // Increase speed
             speed = Mathf.Lerp(speed, MAX_SPEED, Time.deltaTime * ACCELERATION);

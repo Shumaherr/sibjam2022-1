@@ -373,6 +373,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &526963740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 526963741}
+  - component: {fileID: 526963742}
+  m_Layer: 0
+  m_Name: Garage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &526963741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526963740}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 52.29099, y: -98.03999, z: -587.20325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &526963742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526963740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2ca8587cf4c14489ecd361c2c8a23b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cars: []
+  carsPrefabs:
+  - {fileID: 6293023291697122064, guid: 34eec59c1e6a8714a8bf47844c03a35e, type: 3}
 --- !u!1 &651882456
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +881,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2654400901367461791, guid: 7eed2779ef9baae419903c6e3cab1c61, type: 3}
+      propertyPath: transportConfigs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2654400901367461791, guid: 7eed2779ef9baae419903c6e3cab1c61, type: 3}
+      propertyPath: transportConfigs.Array.data[0].name
+      value: Moped
+      objectReference: {fileID: 0}
+    - target: {fileID: 2654400901367461791, guid: 7eed2779ef9baae419903c6e3cab1c61, type: 3}
+      propertyPath: transportConfigs.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 9103477531409140837, guid: 1e82a9da059c54a4bb59e9ba7e30d372, type: 3}
     - target: {fileID: 2654400901377133223, guid: 7eed2779ef9baae419903c6e3cab1c61, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -862,6 +920,10 @@ PrefabInstance:
     - target: {fileID: 2654400901828730905, guid: 7eed2779ef9baae419903c6e3cab1c61, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928996975340259061, guid: 7eed2779ef9baae419903c6e3cab1c61, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7928996975340259062, guid: 7eed2779ef9baae419903c6e3cab1c61, type: 3}
       propertyPath: MAX_SPEED
@@ -952,13 +1014,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 526963742}
+        m_TargetAssemblyTypeName: Garage, Assembly-CSharp
+        m_MethodName: SendSelectedTransport
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

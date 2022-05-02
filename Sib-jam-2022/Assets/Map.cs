@@ -1,9 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
+
+[Serializable]
+public struct TransportConfig
+{
+    public string name;
+    public GameObject prefab;
+}
 
 public class Map : MonoBehaviour
 {
@@ -14,6 +22,8 @@ public class Map : MonoBehaviour
 
     private bool isOpen = false;
 
+    private List<GameObject> transports = new List<GameObject>();
+
     private List<Color> destinationsColors = new List<Color>()
     {
         Color.red,
@@ -22,6 +32,8 @@ public class Map : MonoBehaviour
         Color.cyan,
         Color.magenta
     };
+
+    public List<TransportConfig> transportConfigs;
 
     public void Start()
     {
@@ -38,32 +50,23 @@ public class Map : MonoBehaviour
         isOpen = !isOpen;
     }
 
-    private IEnumerator CloseMap()
+    public Transport GetTransport(string transportName)
     {
-        while (transform.position.y > -215)
-        {
-            var pos = transform.position;
-            pos.y -= 0.1f;
-            transform.position = pos;
-            yield return null;
-        }
-
-        isOpen = false;
-        yield return null;
+        return transports.Select(x => x.GetComponent<Transport>())
+            .First(x => x.transportId == transportName);
     }
 
-    private IEnumerator OpenMap()
+    public void AddTransport(string transportName, Action<bool> callback)
     {
-        while (transform.position.y < 3.73)
-        {
-            var pos = transform.position;
-            pos.y += 0.1f;
-            transform.position = pos;
-            yield return null;
-        }
-
-        isOpen = true;
-        yield return null;
+        var config = transportConfigs.FirstOrDefault(conf => conf.name == transportName);
+        var instance = Instantiate(config.prefab, new Vector3(), Quaternion.identity);
+        instance.transform.parent = transform;
+        var transport = instance.GetComponent<Transport>();
+        transport.transportId = transportName;
+        transport.FinishCallback = callback;
+        // Координаты гаража на карте
+        instance.transform.localPosition = new Vector3(30, 60, -91);
+        transports.Add(instance);
     }
 
     /**
