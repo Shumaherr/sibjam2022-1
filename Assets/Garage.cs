@@ -16,16 +16,19 @@ public class Garage : MonoBehaviour
     {
         map = FindObjectOfType<Map>();
         UnlockTransport("Moped");
-
-        SelectTransport("Moped");
     }
 
     public void SendSelectedTransport()
     {
         // Выбираем текущую машины из гаража
         var transport = selectedCar.GetComponent<GarageCar>();
+        if (transport.isAway) return;
+
         // Получаем цвета грузов
         var colors = transport.GetCargoColors();
+        // Если груза нет, ничего не делаем
+        if (colors.Count == 0) return;
+
         // Отправляем машину из гаража
         transport.DriveAway();
         // Отправляем машину на карте
@@ -34,27 +37,32 @@ public class Garage : MonoBehaviour
 
     public void SelectTransport(string transportName)
     {
+        // Скрываем все машины в гараже кроме выбранной
         foreach (var car in cars)
         {
             var pos = car.transform.position;
-            pos.z = car.GetComponent<GarageCar>().transportId == transportName
-                ? 0
-                : 1000;
+            var id = car.GetComponent<GarageCar>().transportId;
+            if (id == transportName)
+            {
+                pos.z = 0;
+                selectedCar = car;
+            }
+            else
+            {
+                pos.z = 1000;
+            }
+
             car.transform.position = pos;
         }
     }
 
     public void UnlockTransport(string transportName)
     {
-        // make it visible
+        // Разблокируем транспорт, добавляем его на миникарту
         var transport = GetComponentsInChildren<GarageCar>().FirstOrDefault(x => x.transportId == transportName);
         if (transport == null) throw new Exception("transport not found");
         map.AddTransport(transportName, transport.DriveIn);
         selectedCar = transport.gameObject;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        SelectTransport(transportName);
     }
 }

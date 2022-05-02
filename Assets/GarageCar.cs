@@ -9,15 +9,20 @@ public class GarageCar : MonoBehaviour
 {
     public string transportId;
 
-    private bool isAway = false;
+    public bool isAway = false;
 
     private int speed = 1;
 
     private Vector3 originalPosition;
 
+    private Transform frontWheel;
+    private Transform rearWheel;
+
     private void Start()
     {
         originalPosition = transform.position;
+        frontWheel = transform.GetChild(0);
+        rearWheel = transform.GetChild(1);
     }
 
     public List<Color> GetCargoColors()
@@ -47,7 +52,7 @@ public class GarageCar : MonoBehaviour
 
     private IEnumerator DriveLeft()
     {
-        while (transform.position.x > 114)
+        while (transform.position.x > originalPosition.x)
         {
             var pos = transform.position;
             pos.x -= speed;
@@ -59,24 +64,25 @@ public class GarageCar : MonoBehaviour
     public void DriveAway()
     {
         isAway = true;
+        StartCoroutine(Rotate(frontWheel.transform, true));
+        StartCoroutine(Rotate(rearWheel.transform, true));
         StartCoroutine(DriveRight());
     }
 
     public void DriveIn(bool _)
     {
+        StartCoroutine(Rotate(frontWheel.transform, false));
+        StartCoroutine(Rotate(rearWheel.transform, false));
         StartCoroutine(DriveLeft());
         isAway = false;
     }
 
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
-    void Update()
+    IEnumerator Rotate(Transform tf, bool clockwise)
     {
-        // var pos = FindObjectOfType<Map>().GetTransport(transportId).transform.position;
-        // var x = Vector2.Distance(pos, new Vector2(13.8f, 0f));
-
-        // transform.position = new Vector3(x, transform.position.y, transform.position.z) * 10;
+        for (var i = 0; i < 90; i++)
+        {
+            tf.Rotate(Vector3.forward, clockwise ? -10 : 10);
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 }

@@ -58,6 +58,13 @@ public class Map : MonoBehaviour
 
     public void AddTransport(string transportName, Action<bool> callback)
     {
+        // Если транспорт с таким именем уже существует, ничего не делаем
+        if (transports.Select(t => t.GetComponent<Transport>().transportId).Contains(transportName))
+        {
+            return;
+        }
+
+        // Добавляем машину на карту
         var config = transportConfigs.FirstOrDefault(conf => conf.name == transportName);
         var instance = Instantiate(config.prefab, new Vector3(), Quaternion.identity);
         instance.transform.parent = transform;
