@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,10 +12,12 @@ public class Map : MonoBehaviour
 
     public GameObject destinationPrefab;
 
+    private bool isOpen = false;
+
     private List<Color> destinationsColors = new List<Color>()
     {
         Color.red,
-        Color.blue,
+        Color.white,
         Color.green,
         Color.cyan,
         Color.magenta
@@ -24,6 +27,46 @@ public class Map : MonoBehaviour
     {
         nodes = Graphway.instance.nodes;
         destinations = InitializeDestinations();
+    }
+
+    public void ToggleMap()
+    {
+        if (isOpen)
+        {
+            StartCoroutine(CloseMap());
+        }
+        else
+        {
+            StartCoroutine(OpenMap());
+        }
+    }
+
+    private IEnumerator CloseMap()
+    {
+        while (transform.position.y > -215)
+        {
+            var pos = transform.position;
+            pos.y -= 0.1f;
+            transform.position = pos;
+            yield return null;
+        }
+
+        isOpen = false;
+        yield return null;
+    }
+
+    private IEnumerator OpenMap()
+    {
+        while (transform.position.y < 3.73)
+        {
+            var pos = transform.position;
+            pos.y += 0.1f;
+            transform.position = pos;
+            yield return null;
+        }
+
+        isOpen = true;
+        yield return null;
     }
 
     /**
