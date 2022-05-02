@@ -22,8 +22,13 @@ public class Garage : MonoBehaviour
     {
         // Выбираем текущую машины из гаража
         var transport = selectedCar.GetComponent<GarageCar>();
+        if (transport.isAway) return;
+
         // Получаем цвета грузов
         var colors = transport.GetCargoColors();
+        // Если груза нет, ничего не делаем
+        if (colors.Count == 0) return;
+
         // Отправляем машину из гаража
         transport.DriveAway();
         // Отправляем машину на карте
@@ -59,10 +64,5 @@ public class Garage : MonoBehaviour
         map.AddTransport(transportName, transport.DriveIn);
         selectedCar = transport.gameObject;
         SelectTransport(transportName);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

@@ -48,6 +48,7 @@ public class Spawner : MonoBehaviour
 
         var position = new Vector3(Random.Range(left, right), 120f, Quaternion.identity.z);
         var box = Instantiate(prefab, position, Quaternion.identity);
+        box.transform.parent = transform;
     }
 
     // Update is called once per frame
