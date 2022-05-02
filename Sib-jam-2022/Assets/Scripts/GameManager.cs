@@ -18,17 +18,10 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        grid = new Grid(inventorySize.x, inventorySize.y, 1, Vector3.zero);
+        
         gridGO = new GameObject("Grid");
         gridGO.transform.position = Vector3.zero;
-        for (int i = 0; i < grid.Width; i++)
-        {
-            for (int j = 0; j < grid.Height; j++)
-            {
-                var cell = Instantiate(cellPrefab, new Vector3(i, j, 0), Quaternion.identity, gridGO.transform);
-                cell.parent = gridGO.transform;
-            }
-        }
+        
     }
 
     void DrawCell(Vector3 pos, int size)
