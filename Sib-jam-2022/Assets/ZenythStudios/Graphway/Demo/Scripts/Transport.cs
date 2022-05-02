@@ -7,8 +7,8 @@ using Random = System.Random;
 
 public class Transport : MonoBehaviour
 {
-    public const int MAX_SPEED = 50;
-    public const int ACCELERATION = 5;
+    public int MAX_SPEED = 50;
+    public int ACCELERATION = 5;
 
     [Tooltip("Enable Debug Mode to see algoritm in action slowed down. MAKE SURE GIZMOS ARE ENABLED!")]
     public bool debugMode = false;
@@ -69,7 +69,10 @@ public class Transport : MonoBehaviour
             speed = Mathf.Clamp(speed, 0, MAX_SPEED);
 
             // Look at next waypoint 
-            transform.LookAt(waypoints[0].position);
+            var vectorToTarget = waypoints[0].position - transform.position;
+            var angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+            var q = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speed);
 
             // Move toward next waypoint
             transform.position = Vector3.MoveTowards(transform.position, waypoints[0].position,
