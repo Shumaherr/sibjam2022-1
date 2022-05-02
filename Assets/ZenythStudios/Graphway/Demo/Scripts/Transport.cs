@@ -22,6 +22,9 @@ public class Transport : MonoBehaviour
 
     public string transportId;
 
+    private int checkpoints = 0;
+    private int checkpointsDone = 0;
+
     private void Start()
     {
         map = gameObject.GetComponentInParent<Map>();
@@ -32,7 +35,6 @@ public class Transport : MonoBehaviour
 
     private readonly Queue<Vector3> routes = new Queue<Vector3>();
 
-    private int staying = 0;
 
     /**
      * Узнаем все цвета коробок из кузова и строим маршрут
@@ -48,7 +50,7 @@ public class Transport : MonoBehaviour
 
         destinations.Add(storage.position);
         destinations.ForEach(d => routes.Enqueue(d));
-        isDriving = true;
+        checkpoints = destinations.Count;
     }
 
     void Update()
@@ -87,6 +89,7 @@ public class Transport : MonoBehaviour
         {
             // Reset speed
             speed = 0;
+            isDriving = false;
         }
     }
 
@@ -106,6 +109,12 @@ public class Transport : MonoBehaviour
         else
         {
             waypoints = null;
+            checkpointsDone++;
+            if (checkpoints == checkpointsDone)
+            {
+                FinishCallback(true);
+                checkpointsDone = 0;
+            }
         }
     }
 
@@ -121,6 +130,7 @@ public class Transport : MonoBehaviour
         else
         {
             waypoints = path;
+            isDriving = true;
         }
     }
 }

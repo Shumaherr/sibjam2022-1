@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GarageCar : MonoBehaviour
 {
@@ -10,6 +12,13 @@ public class GarageCar : MonoBehaviour
     private bool isAway = false;
 
     private int speed = 1;
+
+    private Vector3 originalPosition;
+
+    private void Start()
+    {
+        originalPosition = transform.position;
+    }
 
     public List<Color> GetCargoColors()
     {
@@ -38,7 +47,7 @@ public class GarageCar : MonoBehaviour
 
     private IEnumerator DriveLeft()
     {
-        while (transform.position.x > 61)
+        while (transform.position.x > 114)
         {
             var pos = transform.position;
             pos.x -= speed;
@@ -65,5 +74,9 @@ public class GarageCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // var pos = FindObjectOfType<Map>().GetTransport(transportId).transform.position;
+        // var x = Vector2.Distance(pos, new Vector2(13.8f, 0f));
+
+        // transform.position = new Vector3(x, transform.position.y, transform.position.z) * 10;
     }
 }
