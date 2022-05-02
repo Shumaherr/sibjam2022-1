@@ -5,20 +5,19 @@ using UnityEngine;
 
 public class Garage : MonoBehaviour
 {
-    public List<GarageCar> cars = new List<GarageCar>();
-
-    public List<GameObject> carsPrefabs = new List<GameObject>();
+    public List<GameObject> cars = new List<GameObject>();
 
     private Map map;
 
     private GameObject selectedCar;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         map = FindObjectOfType<Map>();
-        // Добавляем мопед, самый первоначальный транспорт
-        var moped = AddTransport("Moped");
+        UnlockTransport("Moped");
+
+        SelectTransport("Moped");
     }
 
     public void SendSelectedTransport()
@@ -33,27 +32,25 @@ public class Garage : MonoBehaviour
         map.GetTransport(transport.transportId).SendBoxes(colors);
     }
 
-    public GameObject AddTransport(string transportName)
+    public void SelectTransport(string transportName)
     {
-        var prefab = carsPrefabs.First(x => x.name == transportName);
-        if (prefab == null) throw new Exception("Prefab with name " + transportName + " not found");
-        var newTransport = Instantiate(prefab, new Vector3(), Quaternion.identity);
-        newTransport.transform.position = new Vector3(114, -90, 0);
-        newTransport.transform.parent = transform;
-
-        var garageCar = newTransport.GetComponent<GarageCar>();
-        garageCar.transportId = transportName;
-
-        if (selectedCar != null)
+        foreach (var car in cars)
         {
-            selectedCar.SetActive(false);
+            var pos = car.transform.position;
+            pos.z = car.GetComponent<GarageCar>().transportId == transportName
+                ? 0
+                : 1000;
+            car.transform.position = pos;
         }
+    }
 
-        map.AddTransport(transportName, garageCar.DriveIn);
-
-        selectedCar = newTransport;
-
-        return newTransport;
+    public void UnlockTransport(string transportName)
+    {
+        // make it visible
+        var transport = GetComponentsInChildren<GarageCar>().FirstOrDefault(x => x.transportId == transportName);
+        if (transport == null) throw new Exception("transport not found");
+        map.AddTransport(transportName, transport.DriveIn);
+        selectedCar = transport.gameObject;
     }
 
     // Update is called once per frame

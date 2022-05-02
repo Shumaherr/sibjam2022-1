@@ -55,7 +55,6 @@ public class Transport : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isDriving);
         if (routes.Count > 0 && !isDriving)
         {
             var route = routes.Dequeue();

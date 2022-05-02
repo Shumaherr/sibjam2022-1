@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GarageCar : MonoBehaviour
 {
@@ -10,6 +12,13 @@ public class GarageCar : MonoBehaviour
     private bool isAway = false;
 
     private int speed = 1;
+
+    private Vector3 originalPosition;
+
+    private void Start()
+    {
+        originalPosition = transform.position;
+    }
 
     public List<Color> GetCargoColors()
     {
