@@ -133,19 +133,19 @@ public class AudioManager : MonoBehaviour
 
             case "Pickup":
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(carPickupDriveAway.Path);
+                    FMODUnity.RuntimeManager.PlayOneShot(carTruckDriveAway.Path);
                     break;
                 }
 
             case "Minivan":
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(carMinivanDriveAway.Path);
+                    FMODUnity.RuntimeManager.PlayOneShot(carPickupDriveAway.Path);
                     break;
                 }
 
             case "Truck":
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(carTruckDriveAway.Path);
+                    FMODUnity.RuntimeManager.PlayOneShot(carPickupDriveAway.Path);
                     break;
                 }
 

@@ -35,11 +35,21 @@ public class PauseManager : MonoBehaviour
 
     public void ToMainMenu()
     {
+        AudioManager.instance.UnsetPauseSoundState();
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void PlayAgain()
     {
+        AudioManager.instance.UnsetPauseSoundState();
         SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "hui")
+        {
+
+        }
     }
 }
