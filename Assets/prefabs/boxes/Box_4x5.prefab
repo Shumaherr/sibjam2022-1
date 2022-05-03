@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stickerSprite: {fileID: 21300000, guid: beb027eb058d254489691d7ca1ce9764, type: 3}
+  Price: 200
 --- !u!114 &-8484356447407122898
 MonoBehaviour:
   m_ObjectHideFlags: 0
