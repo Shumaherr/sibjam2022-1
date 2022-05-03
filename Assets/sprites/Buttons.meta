@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/sprites/Buttons.meta
-guid: 7709b54d11904954cb6d83d84c1b9351
 folderAsset: yes
 DefaultImporter:
-========
 guid: 325acd7fbd1bcc54b8954ec152dbceaa
 PrefabImporter:
->>>>>>>> 46a86c64edcab06c37164fa14c6c670f3cd0fedd:Assets/prefabs/box1.prefab.meta
+
   externalObjects: {}
   userData: 
   assetBundleName: 
