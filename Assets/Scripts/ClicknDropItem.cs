@@ -79,7 +79,9 @@ public class ClicknDropItem : Item
         erzatzItem.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
 
         GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(Vector3.zero));
+        var replacerRb = GetComponent<Rigidbody2D>();
+        replacerRb.SetRotation(Quaternion.Euler(Vector3.zero));
+        replacerRb.freezeRotation = true;
 
         var parsedName = name.Split('_')[1].Split('(')[0].Split('x').Select(int.Parse).ToArray();
         var boxSize = new Vector2(parsedName[0], parsedName[1]);

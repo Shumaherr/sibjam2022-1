@@ -21,8 +21,7 @@ public class GarageCar : MonoBehaviour
     private void Start()
     {
         originalPosition = transform.position;
-        frontWheel = transform.GetChild(0);
-        rearWheel = transform.GetChild(1);
+    
     }
 
     public List<Color> GetCargoColors()
@@ -68,15 +67,11 @@ public class GarageCar : MonoBehaviour
         //Play FMOD sound Event.
         AudioManager.instance.PlayDriveAway(transportId);
 
-        StartCoroutine(Rotate(frontWheel.transform, true));
-        StartCoroutine(Rotate(rearWheel.transform, true));
         StartCoroutine(DriveRight());
     }
 
     public void DriveIn(bool _)
     {
-        StartCoroutine(Rotate(frontWheel.transform, false));
-        StartCoroutine(Rotate(rearWheel.transform, false));
         StartCoroutine(DriveLeft());
         isAway = false;
     }
