@@ -40,6 +40,6 @@ public class Box : MonoBehaviour
 
     private void Update()
     {
-        throw new NotImplementedException();
+      
     }
 }
