@@ -21,7 +21,6 @@ public class GarageCar : MonoBehaviour
     private void Start()
     {
         originalPosition = transform.position;
-    
     }
 
     public List<Color> GetCargoColors()
@@ -38,6 +37,8 @@ public class GarageCar : MonoBehaviour
         return new List<Color>() {colors[Random.Range(0, 5)], colors[Random.Range(0, 5)]};
     }
 
+    private int totalPrice = 0;
+
     private IEnumerator DriveRight()
     {
         while (transform.position.x < 500)
@@ -46,6 +47,15 @@ public class GarageCar : MonoBehaviour
             pos.x += speed;
             transform.position = pos;
             yield return null;
+        }
+
+        for (var i = 0; i < transform.childCount; i++)
+        {
+            var child = transform.GetChild(i);
+            if (child.name.StartsWith("Box"))
+            {
+                totalPrice = child.GetComponent<Box>().Price;
+            }
         }
     }
 
@@ -58,6 +68,8 @@ public class GarageCar : MonoBehaviour
             transform.position = pos;
             yield return null;
         }
+
+        // Прибавить к общей сумме бабло
     }
 
     public void DriveAway()

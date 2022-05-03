@@ -10,6 +10,8 @@ public class Box : MonoBehaviour
 
     private Rigidbody2D body;
 
+    public int Price;
+
     private List<Color> colors = new List<Color>()
     {
         Color.red,
