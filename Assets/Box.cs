@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Box : MonoBehaviour
 {
@@ -34,5 +36,10 @@ public class Box : MonoBehaviour
 
         var color = colors[Random.Range(0, colors.Count)];
         spriteSticker.color = color;
+    }
+
+    private void Update()
+    {
+        throw new NotImplementedException();
     }
 }

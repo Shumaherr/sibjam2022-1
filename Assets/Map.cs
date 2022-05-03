@@ -45,7 +45,7 @@ public class Map : MonoBehaviour
     {
         // Двигаем камеру, чтоб скрыть/показать карту
         var pos = Camera.main.transform.position;
-        pos.z = isOpen ? -400 : -740;
+        pos.z = isOpen ? -600 : -740;
         Camera.main.transform.position = pos;
         isOpen = !isOpen;
     }
