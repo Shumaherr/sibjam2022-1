@@ -1,18 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-internal enum State
-{
-    OnStore,
-    StartDrag,
-    IsDragging,
-    EndDrag,
-    InCar
-}
 public class DraggableItem : Item
 {
-    private State state;
-    
 
     DraggableItem()
     {
@@ -21,12 +11,12 @@ public class DraggableItem : Item
 
     private void OnMouseDown()
     {
-        state = State.StartDrag;
+        state = State.StartMoving;
     }
     
     private void OnMouseUp()
     {
-        state = State.EndDrag;
+        state = State.EndMoving;
     }
 
     private void Update()
@@ -35,13 +25,13 @@ public class DraggableItem : Item
         {
             case State.OnStore:
                 break;
-            case State.StartDrag:
+            case State.StartMoving:
                 StartDrag();
                 break;
-            case State.IsDragging:
+            case State.IsMoving:
                 ChangePostion();
                 break;
-            case State.EndDrag:
+            case State.EndMoving:
                 break;
             case State.InCar:
                 break;
@@ -63,6 +53,6 @@ public class DraggableItem : Item
     {
         //TODO check if we can drag
         Debug.Log("Start Drag");
-        state = State.IsDragging;
+        state = State.IsMoving;
     }
 }
