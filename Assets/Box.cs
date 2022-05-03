@@ -39,4 +39,10 @@ public class Box : MonoBehaviour
         color = colors[Random.Range(0, colors.Count)];
         spriteSticker.color = color;
     }
+
+    public void Update()
+    {
+        // local 100
+        Debug.Log(1);
+    }
 }
