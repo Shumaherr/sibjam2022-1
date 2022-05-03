@@ -459,9 +459,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Map
-
-'
+  m_Text: "\u041A\u0430\u0440\u0442\u0430\n"
 --- !u!222 &51571858
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1660,10 +1658,10 @@ RectTransform:
   m_Father: {fileID: 39482560}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 314.9, y: 314.5}
-  m_SizeDelta: {x: -1057, y: -666}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 321, y: 314.5}
+  m_SizeDelta: {x: 280, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &333101783
 MonoBehaviour:
@@ -1698,7 +1696,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cash: 0'
+  m_Text: "\u0414\u0435\u043D\u044C\u0433\u0438: 0"
 --- !u!222 &333101784
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5629,7 +5627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2654400900921316743, guid: 7eed2779ef9baae419903c6e3cab1c61, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2654400900951527703, guid: 7eed2779ef9baae419903c6e3cab1c61, type: 3}
       propertyPath: m_Enabled
@@ -8079,9 +8077,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Deliver
-
-'
+  m_Text: "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C\n"
 --- !u!222 &1526244269
 CanvasRenderer:
   m_ObjectHideFlags: 0
