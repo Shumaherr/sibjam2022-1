@@ -64,6 +64,10 @@ public class GarageCar : MonoBehaviour
     public void DriveAway()
     {
         isAway = true;
+
+        //Play FMOD sound Event.
+        AudioManager.instance.PlayDriveAway(transportId);
+
         StartCoroutine(Rotate(frontWheel.transform, true));
         StartCoroutine(Rotate(rearWheel.transform, true));
         StartCoroutine(DriveRight());
