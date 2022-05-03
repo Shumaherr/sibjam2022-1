@@ -58,7 +58,7 @@ public class GarageCar : MonoBehaviour
             if (child.name.StartsWith("Box"))
             {
                 totalPrice = child.GetComponent<Box>().Price;
-                Destroy(child);
+                Destroy(child.gameObject);
             }
         }
     }
