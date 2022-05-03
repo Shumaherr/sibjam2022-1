@@ -589,6 +589,18 @@ MonoBehaviour:
           m_StringArgument: Truck
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 838968689}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &184255293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,6 +862,327 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311302388}
   m_CullTransparentMesh: 1
+--- !u!1001 &342130894
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mapOpen.Path
+      value: event:/SFX/map open
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mapClose.Path
+      value: event:/SFX/map close
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: purchase.Path
+      value: event:/SFX/purchase
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: buttonClick.Path
+      value: event:/SFX/button click
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: buttonHover.Path
+      value: event:/SFX/button hover
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mapOpen.Guid.Data1
+      value: -1603056339
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mapOpen.Guid.Data2
+      value: 1253441495
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mapOpen.Guid.Data3
+      value: 403652503
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mapOpen.Guid.Data4
+      value: 780314559
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mainMusicEvent.Path
+      value: event:/Music/Main Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mapClose.Guid.Data1
+      value: 2081215542
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mapClose.Guid.Data2
+      value: 1231827935
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mapClose.Guid.Data3
+      value: -1548378980
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mapClose.Guid.Data4
+      value: -1023220753
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: purchase.Guid.Data1
+      value: -2094546652
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: purchase.Guid.Data2
+      value: 1311374461
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: purchase.Guid.Data3
+      value: -477997401
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: purchase.Guid.Data4
+      value: 2050713248
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: buttonClick.Guid.Data1
+      value: 1329620011
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: buttonClick.Guid.Data2
+      value: 1294048299
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: buttonClick.Guid.Data3
+      value: -310936413
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: buttonClick.Guid.Data4
+      value: 929932130
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: buttonHover.Guid.Data1
+      value: 1652453130
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: buttonHover.Guid.Data2
+      value: 1197262671
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: buttonHover.Guid.Data3
+      value: 776127386
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: buttonHover.Guid.Data4
+      value: -691487746
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carMopedDriveAway.Path
+      value: event:/SFX/car send scooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carTruckDriveAway.Path
+      value: event:/SFX/car send truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carPickupDriveAway.Path
+      value: event:/SFX/car send light
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carMinivanDriveAway.Path
+      value: event:/SFX/car send van
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mainMusicEvent.Guid.Data1
+      value: 599966177
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mainMusicEvent.Guid.Data2
+      value: 1138049230
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mainMusicEvent.Guid.Data3
+      value: -1747410279
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: mainMusicEvent.Guid.Data4
+      value: -1417018350
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carMopedDriveAway.Guid.Data1
+      value: -52767398
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carMopedDriveAway.Guid.Data2
+      value: 1095514163
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carMopedDriveAway.Guid.Data3
+      value: -1590153814
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carMopedDriveAway.Guid.Data4
+      value: 408717007
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carTruckDriveAway.Guid.Data1
+      value: 100137126
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carTruckDriveAway.Guid.Data2
+      value: 1296779751
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carTruckDriveAway.Guid.Data3
+      value: -1933624697
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carTruckDriveAway.Guid.Data4
+      value: 2008730822
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carPickupDriveAway.Guid.Data1
+      value: 614146034
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carPickupDriveAway.Guid.Data2
+      value: 1156800909
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carPickupDriveAway.Guid.Data3
+      value: 612539265
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carPickupDriveAway.Guid.Data4
+      value: 520824123
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carMinivanDriveAway.Guid.Data1
+      value: -1135607172
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carMinivanDriveAway.Guid.Data2
+      value: 1256985642
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carMinivanDriveAway.Guid.Data3
+      value: 1886331566
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: carMinivanDriveAway.Guid.Data4
+      value: 1945251352
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241041, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426829241054, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_Name
+      value: === AUDIO MANAGMENT ===
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426853813066, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426853813066, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877426853813066, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877427122248651, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877427122248651, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877427122248651, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877427530595568, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877427665712230, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877427665712230, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877428119380465, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877428119380465, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877428119380465, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877428227148828, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877428227148828, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877428299192225, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108877428299192225, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
 --- !u!1 &466153654
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,14 +1283,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
+--- !u!114 &519420029
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1200,6 +1539,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Pickup
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 838968689}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &703401958
@@ -1550,6 +1901,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 838968689}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayMapOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &804429278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,6 +1951,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804429275}
   m_CullTransparentMesh: 1
+--- !u!114 &838968689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5108877426348598498, guid: b378e8cf82add6241b14243ba0191c9c, type: 3}
+  m_PrefabInstance: {fileID: 342130894}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732d3016f2a844d4d9fe1852add936fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &884407359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,6 +2727,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 838968689}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1435124075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2486,6 +2872,18 @@ MonoBehaviour:
           m_StringArgument: Minivan
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 838968689}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1479731365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2617,6 +3015,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Moped
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 838968689}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1481895453
@@ -2784,10 +3194,10 @@ MonoBehaviour:
           m_StringArgument: Minivan
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1623830972}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 838968689}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayPurchase
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2795,6 +3205,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1479731364}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1479731364}
         m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
@@ -3103,10 +3525,10 @@ MonoBehaviour:
           m_StringArgument: Pickup
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1823585090}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 838968689}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayPurchase
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3114,6 +3536,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 703401957}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 703401957}
         m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
@@ -3260,10 +3694,10 @@ MonoBehaviour:
           m_StringArgument: Truck
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 184255292}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: set_interactable
-        m_Mode: 6
+      - m_Target: {fileID: 838968689}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayPurchase
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3271,6 +3705,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1989398390}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1989398390}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine

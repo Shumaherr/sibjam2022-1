@@ -24,6 +24,26 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private FMODUnity.EventReference buttonHover;
 
+    [SerializeField]
+    private FMODUnity.EventReference purchase;
+
+    [SerializeField]
+    private FMODUnity.EventReference mapOpen;
+
+    [SerializeField]
+    private FMODUnity.EventReference mapClose;
+
+    [SerializeField]
+    private FMODUnity.EventReference carMopedDriveAway;
+
+    [SerializeField]
+    private FMODUnity.EventReference carPickupDriveAway;
+
+    [SerializeField]
+    private FMODUnity.EventReference carMinivanDriveAway;
+
+    [SerializeField]
+    private FMODUnity.EventReference carTruckDriveAway;
 
     private void Awake()
     {
@@ -67,6 +87,56 @@ public class AudioManager : MonoBehaviour
     public void PlayButtonHover()
     {
         FMODUnity.RuntimeManager.PlayOneShot(buttonHover.Path);
+    }
+
+    public void PlayPurchase()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(purchase.Path);
+    }
+    public void PlayMapOpen()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(mapOpen.Path);
+    }
+    public void PlayMapClose()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(mapClose.Path);
+    }
+
+    public void PlayDriveAway(string transportID)
+    {
+        switch (transportID)
+        {
+            case "Moped":
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(carMopedDriveAway.Path);
+                    break;
+                }
+
+            case "Pickup":
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(carPickupDriveAway.Path);
+                    break;
+                }
+
+            case "Minivan":
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(carMinivanDriveAway.Path);
+                    break;
+                }
+
+            case "Truck":
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(carTruckDriveAway.Path);
+                    break;
+                }
+
+            default:
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(carMinivanDriveAway.Path);
+                    break;
+                }
+        }
+
     }
     #endregion
 
