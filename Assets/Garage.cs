@@ -40,7 +40,6 @@ public class Garage : MonoBehaviour
         // Скрываем все машины в гараже кроме выбранной
         foreach (var car in cars)
         {
-            var pos = car.transform.position;
             var id = car.GetComponent<GarageCar>().transportId;
             if (id == transportName)
             {
@@ -51,10 +50,7 @@ public class Garage : MonoBehaviour
             else
             {
                 car.SetActive(false);
-                pos.z = 1000;
             }
-
-            // car.transform.position = pos;
         }
     }
 
