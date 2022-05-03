@@ -14,40 +14,21 @@ public class AudioManager : MonoBehaviour
 
     private FMOD.Studio.EventInstance pauseSnapshot;
 
-    [SerializeField]
-    private FMODUnity.EventReference mainMusicEvent;
     private FMOD.Studio.EventInstance mainMusicInstance;
-
-    [SerializeField]
-    private FMODUnity.EventReference ambienceEvent;
     private FMOD.Studio.EventInstance ambienceInstance;
 
-    [SerializeField]
-    private FMODUnity.EventReference buttonClick;
-
-    [SerializeField]
-    private FMODUnity.EventReference buttonHover;
-
-    [SerializeField]
-    private FMODUnity.EventReference purchase;
-
-    [SerializeField]
-    private FMODUnity.EventReference mapOpen;
-
-    [SerializeField]
-    private FMODUnity.EventReference mapClose;
-
-    [SerializeField]
-    private FMODUnity.EventReference carMopedDriveAway;
-
-    [SerializeField]
-    private FMODUnity.EventReference carPickupDriveAway;
-
-    [SerializeField]
-    private FMODUnity.EventReference carMinivanDriveAway;
-
-    [SerializeField]
-    private FMODUnity.EventReference carTruckDriveAway;
+    private string buttonClick = "event:/SFX/button click";
+    private string buttonHover = "event:/SFX/button hover";
+    private string purchase = "event:/SFX/purchase";
+    private string mapOpen = "event:/SFX/map open";
+    private string mapClose = "event:/SFX/map close";
+    private string carMopedDriveAway = "event:/SFX/car send scooter";
+    private string carPickupDriveAway = "event:/SFX/car send light";
+    private string carMinivanDriveAway = "event:/SFX/car send van";
+    private string carTruckDriveAway = "event:/SFX/car send truck";
+    private string boxTake = "event:/SFX/box take";
+    private string boxPut = "event:/SFX/box put";
+    private string cashIncome = "event:/SFX/cash income";
 
     private void Awake()
     {
@@ -60,9 +41,9 @@ public class AudioManager : MonoBehaviour
         pauseSnapshot = FMODUnity.RuntimeManager.CreateInstance("snapshot:/Pause");
 
         // Create fmod instances here.
-        mainMusicInstance = FMODUnity.RuntimeManager.CreateInstance(mainMusicEvent.Path);
+        mainMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Main Music");
 
-        ambienceInstance = FMODUnity.RuntimeManager.CreateInstance(ambienceEvent.Path);
+        ambienceInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/ambience");
     }
 
     private void Start()
@@ -100,25 +81,40 @@ public class AudioManager : MonoBehaviour
 
     public void PlayButtonClick()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(buttonClick.Path);
+        FMODUnity.RuntimeManager.PlayOneShot(buttonClick);
     }
 
     public void PlayButtonHover()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(buttonHover.Path);
+        FMODUnity.RuntimeManager.PlayOneShot(buttonHover);
     }
 
     public void PlayPurchase()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(purchase.Path);
+        FMODUnity.RuntimeManager.PlayOneShot(purchase);
     }
     public void PlayMapOpen()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(mapOpen.Path);
+        FMODUnity.RuntimeManager.PlayOneShot(mapOpen);
     }
     public void PlayMapClose()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(mapClose.Path);
+        FMODUnity.RuntimeManager.PlayOneShot(mapClose);
+    }
+
+    public void PlayBoxTake()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(boxTake);
+    }
+
+    public void PlayBoxPut()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(boxPut);
+    }
+    
+    public void PlayCashIncome()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(cashIncome);
     }
 
     public void PlayDriveAway(string transportID)
@@ -127,31 +123,31 @@ public class AudioManager : MonoBehaviour
         {
             case "Moped":
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(carMopedDriveAway.Path);
+                    FMODUnity.RuntimeManager.PlayOneShot(carMopedDriveAway);
                     break;
                 }
 
             case "Pickup":
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(carTruckDriveAway.Path);
+                    FMODUnity.RuntimeManager.PlayOneShot(carTruckDriveAway);
                     break;
                 }
 
             case "Minivan":
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(carPickupDriveAway.Path);
+                    FMODUnity.RuntimeManager.PlayOneShot(carPickupDriveAway);
                     break;
                 }
 
             case "Truck":
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(carPickupDriveAway.Path);
+                    FMODUnity.RuntimeManager.PlayOneShot(carPickupDriveAway);
                     break;
                 }
 
             default:
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot(carMinivanDriveAway.Path);
+                    FMODUnity.RuntimeManager.PlayOneShot(carMinivanDriveAway);
                     break;
                 }
         }

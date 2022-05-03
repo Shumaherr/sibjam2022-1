@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc01db1b9505d140a8125de809f2fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_SPEED: 20
+  MAX_SPEED: 18
   ACCELERATION: 5
   transportId: 
 --- !u!212 &9103477531409140839

@@ -18,6 +18,8 @@ public class ClicknDropItem : Item
     {
         if (state == State.OnStore)
         {
+            AudioManager.instance.PlayBoxTake();
+
             if (erzatzItem != null)
             {
                 TryToPlaceItem();
@@ -28,6 +30,8 @@ public class ClicknDropItem : Item
         }
         else if (state == State.IsMoving)
         {
+            AudioManager.instance.PlayBoxPut();
+
             erzatzItem.position = gameObject.transform.position;
             erzatzItem.parent = garage.selectedCar.transform;
             Destroy(gameObject);

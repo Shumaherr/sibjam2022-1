@@ -76,9 +76,9 @@ public class Garage : MonoBehaviour
 
     private Dictionary<string, int> prices = new Dictionary<string, int>()
     {
-        {"Pickup", 800},
-        {"Minivan", 300},
-        {"Truck", 2000},
+        {"Pickup", 500},
+        {"Minivan", 200},
+        {"Truck", 1000},
     };
 
     public void BuyTransport(string n)
@@ -89,7 +89,26 @@ public class Garage : MonoBehaviour
         if (cash >= price)
         {
             FindObjectOfType<Garage>().UnlockTransport(n);
-            cashText.text = "Деньги " + (cash - price);
+            cashText.text = "Деньги: " + (cash - price);
+
+            if (n == "Minivan")
+            {
+                GameObject.Find("BuyLight").SetActive(false);
+                GameObject.Find("LightBtn").GetComponentInChildren<Button>().interactable = true;
+                AudioManager.instance.PlayPurchase();
+            }
+            else if (n == "Truck")
+            {
+                GameObject.Find("BuyVan").SetActive(false);
+                GameObject.Find("VanBtn").GetComponentInChildren<Button>().interactable = true;
+                AudioManager.instance.PlayPurchase();
+            }
+            else if (n == "Pickup")
+            {
+                GameObject.Find("BuyTruck").SetActive(false);
+                GameObject.Find("TruckBtn").GetComponentInChildren<Button>().interactable = true;
+                AudioManager.instance.PlayPurchase();
+            }
         }
     }
 }
