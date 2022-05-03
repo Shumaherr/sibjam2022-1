@@ -19,6 +19,10 @@ public class AudioManager : MonoBehaviour
     private FMOD.Studio.EventInstance mainMusicInstance;
 
     [SerializeField]
+    private FMODUnity.EventReference ambienceEvent;
+    private FMOD.Studio.EventInstance ambienceInstance;
+
+    [SerializeField]
     private FMODUnity.EventReference buttonClick;
 
     [SerializeField]
@@ -57,17 +61,20 @@ public class AudioManager : MonoBehaviour
 
         // Create fmod instances here.
         mainMusicInstance = FMODUnity.RuntimeManager.CreateInstance(mainMusicEvent.Path);
+
+        ambienceInstance = FMODUnity.RuntimeManager.CreateInstance(ambienceEvent.Path);
     }
 
     private void Start()
     {
         PlayMainMusic();
+        PlayAmbience();
     }
 
     #region MUSIC
     public void PlayMainMusic()
     {
-        if (mainMusicInstance.isValid())
+        if (PlaybackState(mainMusicInstance) != FMOD.Studio.PLAYBACK_STATE.PLAYING)
             mainMusicInstance.start();
     }
 
@@ -79,6 +86,18 @@ public class AudioManager : MonoBehaviour
     #endregion
 
     #region SFX
+    public void PlayAmbience()
+    {
+        if (PlaybackState(ambienceInstance) != FMOD.Studio.PLAYBACK_STATE.PLAYING)
+            ambienceInstance.start();
+    }
+
+    public void StopAmbience()
+    {
+        if (ambienceInstance.isValid())
+            ambienceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
     public void PlayButtonClick()
     {
         FMODUnity.RuntimeManager.PlayOneShot(buttonClick.Path);
