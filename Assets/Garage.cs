@@ -61,7 +61,8 @@ public class Garage : MonoBehaviour
     public void UnlockTransport(string transportName)
     {
         // Разблокируем транспорт, добавляем его на миникарту
-        var transport = GetComponentsInChildren<GarageCar>().FirstOrDefault(x => x.transportId == transportName);
+        var transports = cars.Select(x => x.GetComponent<GarageCar>());
+        var transport = transports.FirstOrDefault(x => x.transportId == transportName);
         if (transport == null) throw new Exception("transport not found");
         if (map != null)
         {
