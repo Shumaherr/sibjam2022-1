@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 
@@ -31,7 +32,6 @@ public class ClicknDropItem : Item
 
     private void OnMouseUp()
     {
-
     }
 
     private void Update()
@@ -71,8 +71,20 @@ public class ClicknDropItem : Item
         //TODO check if we can drag
         Debug.Log("Start Drag");
         state = State.IsMoving;
-        GameManager.Instance.FlyingItem = this.transform;
+
         erzatzItem = Instantiate(gameObject).transform;
+        erzatzItem.parent = transform.parent;
+        erzatzItem.transform.position = transform.position;
+        erzatzItem.transform.localPosition = transform.localPosition;
+        erzatzItem.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
+
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().SetRotation(Quaternion.Euler(Vector3.zero));
+
+        var parsedName = name.Split('_')[1].Split('(')[0].Split('x').Select(int.Parse).ToArray();
+        var boxSize = new Vector2(parsedName[0], parsedName[1]);
+        GameManager.Instance.FlyingItem = transform;
+
         erzatzItem.GetComponent<ClicknDropItem>().state = State.IsMoving;
         Color newColor = GetComponent<SpriteRenderer>().color;
         newColor.a = 0.5f;
