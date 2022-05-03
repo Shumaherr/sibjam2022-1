@@ -1,59 +1,82 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grid
+public class Grid: MonoBehaviour
 {
-    private int width;
+    [SerializeField] private Vector3 origin;
+    [SerializeField] private Vector2Int gridSize;
+    [SerializeField] private int cellSize;
 
-    public int Width => width;
-
-    public int Height => height;
-
-    public float CellSize => cellSize;
-
-    private int height;
-    private float cellSize;
-    private Item[,] grid;
-    private Vector3 origin;
-    public Grid(int width, int height, float cellSize, Vector3 origin)
+    public int CellSize
     {
-        this.width = width;
-        this.height = height;
-        this.cellSize = cellSize;
-        this.origin = origin;
-        grid = new Item[width, height];
-        for (int y = 0; y < height; y++)
-        {
-            for (int x = 0; x < width; x++)
-            {
-                Debug.DrawLine(GetWorldPosition(0, this.height), GetWorldPosition(this.width, this.height), Color.red, 0);
-                Debug.DrawLine(GetWorldPosition(this.width, 0), GetWorldPosition(this.width, this.height), Color.red, 0);
+        get => cellSize;
+        set => cellSize = value;
+    }
 
-            }
-        }
-          }
+    [SerializeField] private Transform cellPrefab;
+    
+    private Item[,] grid;
+
+    private void Awake()
+    {
+        grid = new Item[gridSize.x, gridSize.y];
+        cellPrefab.localScale = new Vector3(cellSize, cellSize, cellSize);
+        GenerateGrid();
+    }
 
     public Vector3 GetWorldPosition(int x, int y)
     {
-        return new Vector3(x, y, 0) * cellSize;
+        return new Vector3(x, y, 0) * cellSize + origin;
     }
-    
-    private Vector2Int GetGridPosition(Vector3 worldPosition)
+
+    public Vector2Int GetGridPosition(Vector3 worldPosition)
     {
-        return new Vector2Int(Mathf.FloorToInt(worldPosition.x / cellSize), Mathf.FloorToInt(worldPosition.z / cellSize));
+        return new Vector2Int(Mathf.FloorToInt(worldPosition.x / cellSize),
+            Mathf.FloorToInt(worldPosition.z / cellSize));
     }
-    
+
     public void SetValue(int x, int y, Item value)
     {
-        if (x < 0 && x >= width && y < 0 && y >= height)
+        if (x < 0 && x >= gridSize.x && y < 0 && y >= gridSize.y)
             return;
         grid[x, y] = value;
     }
-    
+
     public void SetValue(Vector3 position, Item value)
     {
         SetValue(GetGridPosition(position).x, GetGridPosition(position).y, value);
     }
-    
+
+    private void GenerateGrid()
+    {
+        for (int i = gridSize.x - 1; i >= 0; i--)
+        {
+            for (int j = gridSize.y - 1; j >= 0; j--)
+            {
+                var cell = Instantiate(cellPrefab, GetWorldPosition(i, j), Quaternion.identity);
+                cell.transform.parent = transform;
+                cell.name = $"Cell {i}, {j}";
+                SetValue(i, j, cell.GetComponent<Item>());
+            }
+        }
+    }
+
+    public float GetLeftBound()
+    {
+        return GetWorldPosition(0, 0).x;
+    }
+    public float GetRightBound()
+    {
+        return GetWorldPosition(gridSize.x - 1, gridSize.y - 1).x;
+    }
+    public float GetTopBound()
+    {
+        return GetWorldPosition(gridSize.x - 1, gridSize.y - 1).y;
+    }
+    public float GetBottomBound()
+    {
+        return GetWorldPosition(0, 0).y;
+    }
 }

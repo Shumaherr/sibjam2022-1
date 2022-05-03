@@ -5,10 +5,16 @@ using UnityEngine.Tilemaps;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private Vector2Int inventorySize;
-    [SerializeField] private Transform cellPrefab;
-    private Grid grid;
+    [SerializeField] private Transform grid;
+    private  Grid gridComponent;
     private GameObject gridGO;
+    private Transform flyingItem;
+
+    public Transform FlyingItem
+    {
+        get => flyingItem;
+        set => flyingItem = value;
+    }
 
 
     [SerializeField] private Camera mainCamera;
@@ -18,17 +24,9 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        grid = new Grid(inventorySize.x, inventorySize.y, 1, Vector3.zero);
-        gridGO = new GameObject("Grid");
-        gridGO.transform.position = Vector3.zero;
-        for (int i = 0; i < grid.Width; i++)
-        {
-            for (int j = 0; j < grid.Height; j++)
-            {
-                var cell = Instantiate(cellPrefab, new Vector3(i, j, 0), Quaternion.identity, gridGO.transform);
-                cell.parent = gridGO.transform;
-            }
-        }
+        
+        gridComponent = grid.GetComponent<Grid>();
+        
     }
 
     void DrawCell(Vector3 pos, int size)
@@ -38,5 +36,51 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
+        HandleInput();
+    }
+
+    private void HandleInput()
+    {
+        if (FlyingItem != null)
+        {
+            var groundPlane = new Plane(Vector3.forward, Vector3.zero);
+            Ray ray = MainCamera.ScreenPointToRay(Input.mousePosition);
+
+            if (groundPlane.Raycast(ray, out float position))
+            {
+                Vector3 worldPosition = ray.GetPoint(position);
+                if(!IsPointInGrid(worldPosition))
+                    return;
+                int x = RoundToValue(worldPosition.x, gridComponent.CellSize * 2);
+                int y = RoundToValue(worldPosition.y, gridComponent.CellSize * 2);
+                
+
+                FlyingItem.transform.position = new Vector3(x, y, 0);
+
+                /*if (Input.GetMouseButtonDown(0))
+                {
+                    PlaceBuilding(x, y);
+                }
+
+                if (Input.GetMouseButtonDown(1))
+                {
+                    Destroy(buildingToPlace.gameObject);
+                    buildingToPlace = null;
+                }*/
+            }
+        }
+    }
+    public static int RoundToValue(float d, int value = 5) =>
+        Mathf.RoundToInt(d / value) * value;
+    
+    private bool IsPointInGrid(Vector3 point)
+    {
+        if(point.x > gridComponent.GetLeftBound() && point.x < gridComponent.GetRightBound() &&
+            point.y > gridComponent.GetBottomBound() && point.y < gridComponent.GetTopBound())
+        {
+            return true;
+        }
+
+        return false;
     }
 }
