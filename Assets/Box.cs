@@ -29,12 +29,13 @@ public class Box : MonoBehaviour
             {
                 parent = transform,
                 localPosition = new Vector3(0, 0, -1),
-                localScale = new Vector3(4f, 4f, 1f)
+                localScale = new Vector3(1f, 1f, 1f)
             }
         };
 
         var spriteSticker = sticker.AddComponent<SpriteRenderer>();
         spriteSticker.sprite = stickerSprite;
+        spriteSticker.sortingOrder = 4;
 
         color = colors[Random.Range(0, colors.Count)];
         spriteSticker.color = color;

@@ -9,7 +9,7 @@ public class Garage : MonoBehaviour
 
     private Map map;
 
-    private GameObject selectedCar;
+    public GameObject selectedCar;
 
     // Start is called before the first frame update
     public void Start()
@@ -44,15 +44,17 @@ public class Garage : MonoBehaviour
             var id = car.GetComponent<GarageCar>().transportId;
             if (id == transportName)
             {
-                pos.z = 0;
+                car.SetActive(true);
+                // pos.z = 0;
                 selectedCar = car;
             }
             else
             {
+                car.SetActive(false);
                 pos.z = 1000;
             }
 
-            car.transform.position = pos;
+            // car.transform.position = pos;
         }
     }
 
@@ -61,7 +63,15 @@ public class Garage : MonoBehaviour
         // Разблокируем транспорт, добавляем его на миникарту
         var transport = GetComponentsInChildren<GarageCar>().FirstOrDefault(x => x.transportId == transportName);
         if (transport == null) throw new Exception("transport not found");
-        map.AddTransport(transportName, transport.DriveIn);
+        if (map != null)
+        {
+            map.AddTransport(transportName, transport.DriveIn);
+        }
+        else
+        {
+            Debug.Log("Активируй карту");
+        }
+
         selectedCar = transport.gameObject;
         SelectTransport(transportName);
     }

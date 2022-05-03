@@ -7,15 +7,31 @@ public class ClicknDropItem : Item
 {
     private Transform erzatzItem;
 
+    private Garage garage;
+
+    private void Start()
+    {
+        garage = GameObject.FindObjectOfType<Garage>();
+    }
+
     private void OnMouseDown()
     {
-        if (erzatzItem != null)
+        if (state == State.OnStore)
         {
-            TryToPlaceItem();
-            return;
-        }
+            if (erzatzItem != null)
+            {
+                TryToPlaceItem();
+                return;
+            }
 
-        state = State.StartMoving;
+            state = State.StartMoving;
+        }
+        else if (state == State.IsMoving)
+        {
+            erzatzItem.position = gameObject.transform.position;
+            erzatzItem.parent = garage.selectedCar.transform;
+            Destroy(gameObject);
+        }
     }
 
     private void TryToPlaceItem()
@@ -28,6 +44,8 @@ public class ClicknDropItem : Item
                 .SetValue(GameManager.Instance.MainCamera.ScreenToWorldPoint(Input.mousePosition),
                     erzatzItem.GetComponent<Item>());
         }
+
+        Debug.Log(12);
     }
 
     private void OnMouseUp()
@@ -78,7 +96,7 @@ public class ClicknDropItem : Item
         erzatzItem.transform.localPosition = transform.localPosition;
         erzatzItem.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
 
-        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<BoxCollider2D>().isTrigger = true;
         var replacerRb = GetComponent<Rigidbody2D>();
         replacerRb.SetRotation(Quaternion.Euler(Vector3.zero));
         replacerRb.freezeRotation = true;

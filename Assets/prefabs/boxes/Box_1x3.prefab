@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 8441712382528523809, guid: f2f473992b5b50c4886f192d9a64dfc4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078f8dd0e765d9046a43a3401616041b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stickerSprite: {fileID: 21300000, guid: 2ff7d0126d077254884651dec777caac, type: 3}
+  stickerSprite: {fileID: 21300000, guid: beb027eb058d254489691d7ca1ce9764, type: 3}
 --- !u!114 &3482729571288089105
 MonoBehaviour:
   m_ObjectHideFlags: 0
