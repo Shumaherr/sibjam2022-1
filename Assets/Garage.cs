@@ -74,8 +74,16 @@ public class Garage : MonoBehaviour
         SelectTransport(transportName);
     }
 
-    public void BuyTransport(string n, int price)
+    private Dictionary<string, int> prices = new Dictionary<string, int>()
     {
+        {"Pickup", 800},
+        {"Minivan", 300},
+        {"Truck", 2000},
+    };
+
+    public void BuyTransport(string n)
+    {
+        var price = prices[n];
         var cashText = GameObject.Find("CashText").GetComponent<Text>();
         var cash = int.Parse(cashText.text.Split(' ')[1]);
         if (cash >= price)
