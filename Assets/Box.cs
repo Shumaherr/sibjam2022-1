@@ -21,7 +21,7 @@ public class Box : MonoBehaviour
         Color.magenta
     };
 
-    private Color color;
+    public Color color;
 
     void Start()
     {

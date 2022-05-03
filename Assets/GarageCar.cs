@@ -27,16 +27,16 @@ public class GarageCar : MonoBehaviour
 
     public List<Color> GetCargoColors()
     {
-        var colors = new List<Color>()
+        var colors = new List<Color>();
+        for (var i = 0; i < transform.childCount; i++)
         {
-            Color.red,
-            Color.white,
-            Color.green,
-            Color.cyan,
-            Color.magenta
-        };
-        // @TODO: Получить сет цветов всех коробок в грузовом отсеке
-        return new List<Color>() {colors[Random.Range(0, 5)], colors[Random.Range(0, 5)]};
+            var child = transform.GetChild(i);
+            if (!child.name.StartsWith("Box")) continue;
+            var c = child.GetComponent<Box>().color;
+            colors.Add(c);
+        }
+
+        return colors;
     }
 
     private int totalPrice = 0;
