@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GarageCar : MonoBehaviour
@@ -14,13 +15,14 @@ public class GarageCar : MonoBehaviour
     private int speed = 1;
 
     private Vector3 originalPosition;
-
+    private Text cashText;
     private Transform frontWheel;
     private Transform rearWheel;
 
     private void Start()
     {
         originalPosition = transform.position;
+        cashText = GameObject.Find("CashText").GetComponent<Text>();
     }
 
     public List<Color> GetCargoColors()
@@ -39,6 +41,7 @@ public class GarageCar : MonoBehaviour
 
     private int totalPrice = 0;
 
+
     private IEnumerator DriveRight()
     {
         while (transform.position.x < 500)
@@ -55,6 +58,7 @@ public class GarageCar : MonoBehaviour
             if (child.name.StartsWith("Box"))
             {
                 totalPrice = child.GetComponent<Box>().Price;
+                Destroy(child);
             }
         }
     }
@@ -69,6 +73,9 @@ public class GarageCar : MonoBehaviour
             yield return null;
         }
 
+        var cash = int.Parse(cashText.text.Split(' ')[1]);
+        cashText.text = "Деньги " + (cash + totalPrice);
+        totalPrice = 0;
         // Прибавить к общей сумме бабло
     }
 
