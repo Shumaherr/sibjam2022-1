@@ -18,8 +18,12 @@ public class AudioManager : MonoBehaviour
     private FMODUnity.EventReference mainMusicEvent;
     private FMOD.Studio.EventInstance mainMusicInstance;
 
-    //[SerializeField]
-    //private FMODUnity.EventReference footstepsEvent;
+    [SerializeField]
+    private FMODUnity.EventReference buttonClick;
+
+    [SerializeField]
+    private FMODUnity.EventReference buttonHover;
+
 
     private void Awake()
     {
@@ -55,10 +59,15 @@ public class AudioManager : MonoBehaviour
     #endregion
 
     #region SFX
-    //public void PlayFootsteps()
-    //{
-    //    FMODUnity.RuntimeManager.PlayOneShot(footstepsEvent.Path);
-    //}
+    public void PlayButtonClick()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(buttonClick.Path);
+    }
+
+    public void PlayButtonHover()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(buttonHover.Path);
+    }
     #endregion
 
     #region BUS VOLUME
