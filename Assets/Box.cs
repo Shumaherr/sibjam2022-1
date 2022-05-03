@@ -8,6 +8,8 @@ public class Box : MonoBehaviour
 {
     public Sprite stickerSprite;
 
+    private Rigidbody2D body;
+
     private List<Color> colors = new List<Color>()
     {
         Color.red,
@@ -17,7 +19,7 @@ public class Box : MonoBehaviour
         Color.magenta
     };
 
-    public readonly Color color;
+    private Color color;
 
     void Start()
     {
@@ -34,12 +36,7 @@ public class Box : MonoBehaviour
         var spriteSticker = sticker.AddComponent<SpriteRenderer>();
         spriteSticker.sprite = stickerSprite;
 
-        var color = colors[Random.Range(0, colors.Count)];
+        color = colors[Random.Range(0, colors.Count)];
         spriteSticker.color = color;
-    }
-
-    private void Update()
-    {
-      
     }
 }
