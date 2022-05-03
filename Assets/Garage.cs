@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Garage : MonoBehaviour
 {
@@ -71,5 +72,16 @@ public class Garage : MonoBehaviour
 
         selectedCar = transport.gameObject;
         SelectTransport(transportName);
+    }
+
+    public void BuyTransport(string n, int price)
+    {
+        var cashText = GameObject.Find("CashText").GetComponent<Text>();
+        var cash = int.Parse(cashText.text.Split(' ')[1]);
+        if (cash >= price)
+        {
+            FindObjectOfType<Garage>().UnlockTransport(n);
+            cashText.text = "Деньги " + (cash - price);
+        }
     }
 }

@@ -83,15 +83,4 @@ public class GameManager : Singleton<GameManager>
 
         return false;
     }
-
-    public void BuyCar(string name, int price)
-    {
-        var cashText = GameObject.Find("CashText").GetComponent<Text>();
-        var cash = int.Parse(cashText.text.Split(' ')[1]);
-        if (cash >= price)
-        {
-            FindObjectOfType<Garage>().UnlockTransport(name);
-            cashText.text = "Деньги " + (cash - price);
-        }
-    }
 }
